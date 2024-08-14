@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: rgb(200, 220, 255);
+        }
+        .detail-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: snow;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="detail-container" id="detailContent"></div>
+
+    <script>
+        function getTopicDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+
+            const topicDetails = {
+                1: { title: "Topic 1", content: "Lorem ipsum odor amet, consectetuer adipiscing elit. Leo et id nec convallis neque. Curabitur sit aliquam mollis libero felis amet at massa! Mi dictumst lacinia varius parturient fusce donec. Et venenatis diam integer facilisis proin ridiculus." },
+                2: { title: "Topic 2", content: "Lorem ipsum odor amet, consectetuer adipiscing elit. Leo et id nec convallis neque. Curabitur sit aliquam mollis libero felis amet at massa! Mi dictumst lacinia varius parturient fusce donec. Et venenatis diam integer facilisis proin ridiculus." },
+                3: { title: "Topic 3", content: "Lorem ipsum odor amet, consectetuer adipiscing elit. Leo et id nec convallis neque. Curabitur sit aliquam mollis libero felis amet at massa! Mi dictumst lacinia varius parturient fusce donec. Et venenatis diam integer facilisis proin ridiculus." },
+                4: { title: "Topic 4", content: "Lorem ipsum odor amet, consectetuer adipiscing elit. Leo et id nec convallis neque. Curabitur sit aliquam mollis libero felis amet at massa! Mi dictumst lacinia varius parturient fusce donec. Et venenatis diam integer facilisis proin ridiculus." },
+                5: { title: "Topic 5", content: "Lorem ipsum odor amet, consectetuer adipiscing elit. Leo et id nec convallis neque. Curabitur sit aliquam mollis libero felis amet at massa! Mi dictumst lacinia varius parturient fusce donec. Et venenatis diam integer facilisis proin ridiculus." },
+                6: { title: "Topic 6", content: "Lorem ipsum odor amet, consectetuer adipiscing elit. Leo et id nec convallis neque. Curabitur sit aliquam mollis libero felis amet at massa! Mi dictumst lacinia varius parturient fusce donec. Et venenatis diam integer facilisis proin ridiculus." },
+            };
+
+            const detail = topicDetails[id];
+            if (detail) {
+                document.title = detail.title;
+                document.getElementById('detailContent').innerHTML = `
+                    <h1>${detail.title}</h1>
+                    <p>${detail.content}</p>
+                `;
+            } else {
+                document.getElementById('detailContent').innerHTML = '<h1>Topic not found</h1>';
+            }
+        }
+
+        getTopicDetails();
+    </script>
+</body>
+</html>

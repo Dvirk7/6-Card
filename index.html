@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 Card Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .card {
+            width: calc((100% - 30px) / 3);
+            margin: 15px;
+            background-color: rgb(200, 220, 255);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+        p {
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="cardContainer"></div>
+
+    <script>
+        const cardData = [
+            { id: 1, title: "Topic 1", description: "Brief description of Topic 1", image: "https://picsum.photos/seed/picsum/500/700" },
+            { id: 2, title: "Topic 2", description: "Brief description of Topic 2", image: "https://picsum.photos/seed/picsum/500/700" },
+            { id: 3, title: "Topic 3", description: "Brief description of Topic 3", image: "https://picsum.photos/seed/picsum/500/700" },
+            { id: 4, title: "Topic 4", description: "Brief description of Topic 4", image: "https://picsum.photos/seed/picsum/500/700" },
+            { id: 5, title: "Topic 5", description: "Brief description of Topic 5", image: "https://picsum.photos/seed/picsum/500/700" },
+            { id: 6, title: "Topic 6", description: "Brief description of Topic 6", image: "https://picsum.photos/seed/picsum/500/700" },
+        ];
+
+        function createCards() {
+            const container = document.getElementById('cardContainer');
+            cardData.forEach(card => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'card';
+                cardElement.innerHTML = `
+                    <img src="${card.image}" alt="${card.title}">
+                    <div class="card-content">
+                        <h2>${card.title}</h2>
+                        <p>${card.description}</p>
+                    </div>
+                `;
+                cardElement.addEventListener('click', () => openDetailPage(card.id));
+                container.appendChild(cardElement);
+            });
+        }
+
+        function openDetailPage(id) {
+            window.open(`detail.html?id=${id}`, '_blank');
+        }
+
+        createCards();
+    </script>
+</body>
+</html>
